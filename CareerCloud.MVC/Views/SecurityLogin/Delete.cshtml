@@ -1,0 +1,128 @@
+﻿@model CareerCloud.Pocos.SecurityLoginPoco
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SecurityLoginPoco</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PasswordUpdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PasswordUpdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgreementAccepted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgreementAccepted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsLocked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsLocked)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsInactive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsInactive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForceChangePassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForceChangePassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrefferredLanguage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrefferredLanguage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

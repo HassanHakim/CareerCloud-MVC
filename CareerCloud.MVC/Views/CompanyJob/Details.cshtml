@@ -1,0 +1,58 @@
+﻿@model CareerCloud.Pocos.CompanyJobPoco
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CompanyJobPoco</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyProfile.CompanyWebsite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyProfile.CompanyWebsite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfileCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfileCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsInactive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsInactive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsCompanyHidden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsCompanyHidden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

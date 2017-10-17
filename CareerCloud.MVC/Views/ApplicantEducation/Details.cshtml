@@ -1,0 +1,74 @@
+﻿@model CareerCloud.Pocos.ApplicantEducationPoco
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ApplicantEducationPoco</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicantProfile.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicantProfile.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CertificateDiploma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CertificateDiploma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletionPercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletionPercent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Major)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Major)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

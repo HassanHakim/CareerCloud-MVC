@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7A439D7B-8757-41C1-9E3A-F6C57CC4D6FE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CareerCloud.MVC</RootNamespace>
+    <AssemblyName>CareerCloud.MVC</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ApplicantEducationController.cs" />
+    <Compile Include="Controllers\ApplicantJobApplicationController.cs" />
+    <Compile Include="Controllers\ApplicantProfileController.cs" />
+    <Compile Include="Controllers\ApplicantResumeController.cs" />
+    <Compile Include="Controllers\ApplicantSkillController.cs" />
+    <Compile Include="Controllers\ApplicantWorkHistoryController.cs" />
+    <Compile Include="Controllers\CompanyDescriptionController.cs" />
+    <Compile Include="Controllers\CompanyJobController.cs" />
+    <Compile Include="Controllers\CompanyJobDescriptionController.cs" />
+    <Compile Include="Controllers\CompanyJobEducationController.cs" />
+    <Compile Include="Controllers\CompanyJobSkillController.cs" />
+    <Compile Include="Controllers\CompanyLocationController.cs" />
+    <Compile Include="Controllers\CompanyProfileController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SecurityLoginController.cs" />
+    <Compile Include="Controllers\SecurityLoginsLogController.cs" />
+    <Compile Include="Controllers\SecurityLoginsRoleController.cs" />
+    <Compile Include="Controllers\SecurityRoleController.cs" />
+    <Compile Include="Controllers\SystemCountryCodeController.cs" />
+    <Compile Include="Controllers\SystemLanguageCodeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\ApplicantProfile\Create.cshtml" />
+    <Content Include="Views\ApplicantProfile\Delete.cshtml" />
+    <Content Include="Views\ApplicantProfile\Details.cshtml" />
+    <Content Include="Views\ApplicantProfile\Edit.cshtml" />
+    <Content Include="Views\ApplicantProfile\Index.cshtml" />
+    <Content Include="Views\ApplicantEducation\Create.cshtml" />
+    <Content Include="Views\ApplicantEducation\Delete.cshtml" />
+    <Content Include="Views\ApplicantEducation\Details.cshtml" />
+    <Content Include="Views\ApplicantEducation\Edit.cshtml" />
+    <Content Include="Views\ApplicantEducation\Index.cshtml" />
+    <Content Include="Views\ApplicantJobApplication\Create.cshtml" />
+    <Content Include="Views\ApplicantJobApplication\Delete.cshtml" />
+    <Content Include="Views\ApplicantJobApplication\Details.cshtml" />
+    <Content Include="Views\ApplicantJobApplication\Edit.cshtml" />
+    <Content Include="Views\ApplicantJobApplication\Index.cshtml" />
+    <Content Include="Views\ApplicantResume\Create.cshtml" />
+    <Content Include="Views\ApplicantResume\Delete.cshtml" />
+    <Content Include="Views\ApplicantResume\Details.cshtml" />
+    <Content Include="Views\ApplicantResume\Edit.cshtml" />
+    <Content Include="Views\ApplicantResume\Index.cshtml" />
+    <Content Include="Views\ApplicantSkill\Create.cshtml" />
+    <Content Include="Views\ApplicantSkill\Delete.cshtml" />
+    <Content Include="Views\ApplicantSkill\Details.cshtml" />
+    <Content Include="Views\ApplicantSkill\Edit.cshtml" />
+    <Content Include="Views\ApplicantSkill\Index.cshtml" />
+    <Content Include="Views\ApplicantWorkHistory\Create.cshtml" />
+    <Content Include="Views\ApplicantWorkHistory\Delete.cshtml" />
+    <Content Include="Views\ApplicantWorkHistory\Details.cshtml" />
+    <Content Include="Views\ApplicantWorkHistory\Edit.cshtml" />
+    <Content Include="Views\ApplicantWorkHistory\Index.cshtml" />
+    <Content Include="Views\CompanyDescription\Create.cshtml" />
+    <Content Include="Views\CompanyDescription\Delete.cshtml" />
+    <Content Include="Views\CompanyDescription\Details.cshtml" />
+    <Content Include="Views\CompanyDescription\Edit.cshtml" />
+    <Content Include="Views\CompanyDescription\Index.cshtml" />
+    <Content Include="Views\CompanyJobDescription\Create.cshtml" />
+    <Content Include="Views\CompanyJobDescription\Delete.cshtml" />
+    <Content Include="Views\CompanyJobDescription\Details.cshtml" />
+    <Content Include="Views\CompanyJobDescription\Edit.cshtml" />
+    <Content Include="Views\CompanyJobDescription\Index.cshtml" />
+    <Content Include="Views\CompanyJobEducation\Create.cshtml" />
+    <Content Include="Views\CompanyJobEducation\Delete.cshtml" />
+    <Content Include="Views\CompanyJobEducation\Details.cshtml" />
+    <Content Include="Views\CompanyJobEducation\Edit.cshtml" />
+    <Content Include="Views\CompanyJobEducation\Index.cshtml" />
+    <Content Include="Views\CompanyJob\Create.cshtml" />
+    <Content Include="Views\CompanyJob\Delete.cshtml" />
+    <Content Include="Views\CompanyJob\Details.cshtml" />
+    <Content Include="Views\CompanyJob\Edit.cshtml" />
+    <Content Include="Views\CompanyJob\Index.cshtml" />
+    <Content Include="Views\CompanyJobSkill\Create.cshtml" />
+    <Content Include="Views\CompanyJobSkill\Delete.cshtml" />
+    <Content Include="Views\CompanyJobSkill\Details.cshtml" />
+    <Content Include="Views\CompanyJobSkill\Edit.cshtml" />
+    <Content Include="Views\CompanyJobSkill\Index.cshtml" />
+    <Content Include="Views\CompanyLocation\Create.cshtml" />
+    <Content Include="Views\CompanyLocation\Delete.cshtml" />
+    <Content Include="Views\CompanyLocation\Details.cshtml" />
+    <Content Include="Views\CompanyLocation\Edit.cshtml" />
+    <Content Include="Views\CompanyLocation\Index.cshtml" />
+    <Content Include="Views\CompanyProfile\Create.cshtml" />
+    <Content Include="Views\CompanyProfile\Delete.cshtml" />
+    <Content Include="Views\CompanyProfile\Details.cshtml" />
+    <Content Include="Views\CompanyProfile\Edit.cshtml" />
+    <Content Include="Views\CompanyProfile\Index.cshtml" />
+    <Content Include="Views\SecurityLogin\Create.cshtml" />
+    <Content Include="Views\SecurityLogin\Delete.cshtml" />
+    <Content Include="Views\SecurityLogin\Details.cshtml" />
+    <Content Include="Views\SecurityLogin\Edit.cshtml" />
+    <Content Include="Views\SecurityLogin\Index.cshtml" />
+    <Content Include="Views\SecurityLoginsLog\Create.cshtml" />
+    <Content Include="Views\SecurityLoginsLog\Delete.cshtml" />
+    <Content Include="Views\SecurityLoginsLog\Details.cshtml" />
+    <Content Include="Views\SecurityLoginsLog\Edit.cshtml" />
+    <Content Include="Views\SecurityLoginsLog\Index.cshtml" />
+    <Content Include="Views\SecurityLoginsRole\Create.cshtml" />
+    <Content Include="Views\SecurityLoginsRole\Delete.cshtml" />
+    <Content Include="Views\SecurityLoginsRole\Details.cshtml" />
+    <Content Include="Views\SecurityLoginsRole\Edit.cshtml" />
+    <Content Include="Views\SecurityLoginsRole\Index.cshtml" />
+    <Content Include="Views\SecurityRole\Create.cshtml" />
+    <Content Include="Views\SecurityRole\Delete.cshtml" />
+    <Content Include="Views\SecurityRole\Details.cshtml" />
+    <Content Include="Views\SecurityRole\Edit.cshtml" />
+    <Content Include="Views\SecurityRole\Index.cshtml" />
+    <Content Include="Views\SystemCountryCode\Create.cshtml" />
+    <Content Include="Views\SystemCountryCode\Delete.cshtml" />
+    <Content Include="Views\SystemCountryCode\Details.cshtml" />
+    <Content Include="Views\SystemCountryCode\Edit.cshtml" />
+    <Content Include="Views\SystemCountryCode\Index.cshtml" />
+    <Content Include="Views\SystemLanguageCode\Create.cshtml" />
+    <Content Include="Views\SystemLanguageCode\Delete.cshtml" />
+    <Content Include="Views\SystemLanguageCode\Details.cshtml" />
+    <Content Include="Views\SystemLanguageCode\Edit.cshtml" />
+    <Content Include="Views\SystemLanguageCode\Index.cshtml" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="CodeTemplates\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CareerCloud.BusinessLogicLayer\CareerCloud.BusinessLogicLayer.csproj">
+      <Project>{bc1c7fb2-6676-4fd4-b281-fa3f0acbb7ec}</Project>
+      <Name>CareerCloud.BusinessLogicLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CareerCloud.DataAccessLayer\CareerCloud.DataAccessLayer.csproj">
+      <Project>{95844af3-bc02-4e5f-860e-96b18e541c21}</Project>
+      <Name>CareerCloud.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CareerCloud.EntityFrameworkDataAccess\CareerCloud.EntityFrameworkDataAccess.csproj">
+      <Project>{84e69999-dca9-4795-8784-1eca3232db20}</Project>
+      <Name>CareerCloud.EntityFrameworkDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CareerCloud.Pocos\CareerCloud.Pocos.csproj">
+      <Project>{facb9a11-546f-4a1e-b20b-df66a299f246}</Project>
+      <Name>CareerCloud.Pocos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54688</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54688/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

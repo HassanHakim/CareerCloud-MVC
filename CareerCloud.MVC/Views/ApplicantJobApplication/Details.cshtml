@@ -1,0 +1,50 @@
+﻿@model CareerCloud.Pocos.ApplicantJobApplicationPoco
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ApplicantJobApplicationPoco</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicantProfile.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicantProfile.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyJob.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyJob.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,104 @@
+﻿@model CareerCloud.Pocos.ApplicantProfilePoco
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ApplicantProfilePoco</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SecurityLogin.EmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecurityLogin.EmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SystemCountryCode.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SystemCountryCode.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentSalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Province)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Province)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Street)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostalCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Currency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Currency)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

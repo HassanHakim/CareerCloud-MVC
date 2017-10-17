@@ -1,0 +1,56 @@
+﻿@model CareerCloud.Pocos.ApplicantJobApplicationPoco
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ApplicantJobApplicationPoco</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicantProfile.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicantProfile.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyJob.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyJob.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
