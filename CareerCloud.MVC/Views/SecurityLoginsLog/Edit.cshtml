@@ -36,8 +36,9 @@
             @Html.LabelFor(model => model.IsSuccesful, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsSuccesful)
-                    @Html.ValidationMessageFor(model => model.IsSuccesful, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.IsSuccesful)
+                    @*@Html.EditorFor(model => model.IsSuccesful)
+                    @Html.ValidationMessageFor(model => model.IsSuccesful, "", new { @class = "text-danger" })*@
                 </div>
             </div>
         </div>
