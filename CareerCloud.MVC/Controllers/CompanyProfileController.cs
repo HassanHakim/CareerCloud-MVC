@@ -8,12 +8,15 @@ using System.Web;
 using System.Web.Mvc;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using CareerCloud.BusinessLogicLayer;
 
 namespace CareerCloud.MVC.Controllers
 {
     public class CompanyProfileController : Controller
     {
         private CareerCloudContext db = new CareerCloudContext();
+        
+       // var _logic = new CompanyProfileLogic(new EFGenericRepository<CompanyProfilePoco>(false));
 
         // GET: CompanyProfile
         public ActionResult Index()

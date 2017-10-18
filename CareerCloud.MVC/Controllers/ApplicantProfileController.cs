@@ -8,28 +8,30 @@ using System.Web;
 using System.Web.Mvc;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using CareerCloud.BusinessLogicLayer;
 
 namespace CareerCloud.MVC.Controllers
 {
     public class ApplicantProfileController : Controller
     {
-        private CareerCloudContext db = new CareerCloudContext();
+        //private CareerCloudContext db = new CareerCloudContext();       
+        ApplicantProfileLogic _logic = new ApplicantProfileLogic(new EFGenericRepository<ApplicantProfilePoco>(false));
 
         // GET: ApplicantProfile
         public ActionResult Index()
         {
-            var applicantProfile = db.ApplicantProfile.Include(a => a.SecurityLogin).Include(a => a.SystemCountryCode);
-            return View(applicantProfile.ToList());
+           // var applicantProfile = db.ApplicantProfile.Include(a => a.SecurityLogin).Include(a => a.SystemCountryCode);
+            return View(_logic.GetAll());
         }
 
         // GET: ApplicantProfile/Details/5
-        public ActionResult Details(Guid? id)
+        public ActionResult Details(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantProfilePoco applicantProfilePoco = db.ApplicantProfile.Find(id);
+            ApplicantProfilePoco applicantProfilePoco = _logic.Get(id);//db.ApplicantProfile.Find(id);
             if (applicantProfilePoco == null)
             {
                 return HttpNotFound();
@@ -40,8 +42,8 @@ namespace CareerCloud.MVC.Controllers
         // GET: ApplicantProfile/Create
         public ActionResult Create()
         {
-            ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress");
-            ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name");
+            //ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress");
+            //ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name");
             return View();
         }
 
@@ -55,30 +57,31 @@ namespace CareerCloud.MVC.Controllers
             if (ModelState.IsValid)
             {
                 applicantProfilePoco.Id = Guid.NewGuid();
-                db.ApplicantProfile.Add(applicantProfilePoco);
-                db.SaveChanges();
+                //db.ApplicantProfile.Add(applicantProfilePoco);
+                //db.SaveChanges();
+                _logic.Add(new ApplicantProfilePoco[] { applicantProfilePoco });
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress", applicantProfilePoco.Login);
-            ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name", applicantProfilePoco.Country);
+            //ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress", applicantProfilePoco.Login);
+            //ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name", applicantProfilePoco.Country);
             return View(applicantProfilePoco);
         }
 
         // GET: ApplicantProfile/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantProfilePoco applicantProfilePoco = db.ApplicantProfile.Find(id);
+            ApplicantProfilePoco applicantProfilePoco = _logic.Get(id);// db.ApplicantProfile.Find(id);
             if (applicantProfilePoco == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress", applicantProfilePoco.Login);
-            ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name", applicantProfilePoco.Country);
+            //ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress", applicantProfilePoco.Login);
+            //ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name", applicantProfilePoco.Country);
             return View(applicantProfilePoco);
         }
 
@@ -91,23 +94,24 @@ namespace CareerCloud.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(applicantProfilePoco).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(applicantProfilePoco).State = EntityState.Modified;
+                //db.SaveChanges();
+                _logic.Update(new ApplicantProfilePoco[] { applicantProfilePoco });
                 return RedirectToAction("Index");
             }
-            ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress", applicantProfilePoco.Login);
-            ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name", applicantProfilePoco.Country);
+           // ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress", applicantProfilePoco.Login);
+           // ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name", applicantProfilePoco.Country);
             return View(applicantProfilePoco);
         }
 
         // GET: ApplicantProfile/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantProfilePoco applicantProfilePoco = db.ApplicantProfile.Find(id);
+            ApplicantProfilePoco applicantProfilePoco = _logic.Get(id);// db.ApplicantProfile.Find(id);
             if (applicantProfilePoco == null)
             {
                 return HttpNotFound();
@@ -120,18 +124,19 @@ namespace CareerCloud.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            ApplicantProfilePoco applicantProfilePoco = db.ApplicantProfile.Find(id);
-            db.ApplicantProfile.Remove(applicantProfilePoco);
-            db.SaveChanges();
+            ApplicantProfilePoco applicantProfilePoco = _logic.Get(id);//db.ApplicantProfile.Find(id);
+            //db.ApplicantProfile.Remove(applicantProfilePoco);
+            //db.SaveChanges();
+            _logic.Delete(new ApplicantProfilePoco[] { applicantProfilePoco });
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
+            //if (disposing)
+            //{
+            //    db.Dispose();
+            //}
             base.Dispose(disposing);
         }
     }
