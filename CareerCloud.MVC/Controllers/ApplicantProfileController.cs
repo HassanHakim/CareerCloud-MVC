@@ -14,14 +14,16 @@ namespace CareerCloud.MVC.Controllers
 {
     public class ApplicantProfileController : Controller
     {
-        //private CareerCloudContext db = new CareerCloudContext();       
+        private CareerCloudContext db = new CareerCloudContext();       
         ApplicantProfileLogic _logic = new ApplicantProfileLogic(new EFGenericRepository<ApplicantProfilePoco>(false));
 
         // GET: ApplicantProfile
+        
         public ActionResult Index()
         {
-           // var applicantProfile = db.ApplicantProfile.Include(a => a.SecurityLogin).Include(a => a.SystemCountryCode);
-            return View(_logic.GetAll());
+            var applicantProfile = db.ApplicantProfile.Include(a => a.SecurityLogin).Include(a => a.SystemCountryCode);
+            return View(applicantProfile);
+            //return View(_logic.GetAll());
         }
 
         // GET: ApplicantProfile/Details/5
@@ -42,8 +44,8 @@ namespace CareerCloud.MVC.Controllers
         // GET: ApplicantProfile/Create
         public ActionResult Create()
         {
-            //ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress");
-            //ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name");
+            ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress");
+            ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name");
             return View();
         }
 
@@ -63,8 +65,8 @@ namespace CareerCloud.MVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress", applicantProfilePoco.Login);
-            //ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name", applicantProfilePoco.Country);
+            ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress", applicantProfilePoco.Login);
+            ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name", applicantProfilePoco.Country);
             return View(applicantProfilePoco);
         }
 
@@ -80,8 +82,8 @@ namespace CareerCloud.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress", applicantProfilePoco.Login);
-            //ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name", applicantProfilePoco.Country);
+            ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress", applicantProfilePoco.Login);
+            ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name", applicantProfilePoco.Country);
             return View(applicantProfilePoco);
         }
 
@@ -99,8 +101,9 @@ namespace CareerCloud.MVC.Controllers
                 _logic.Update(new ApplicantProfilePoco[] { applicantProfilePoco });
                 return RedirectToAction("Index");
             }
-           // ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress", applicantProfilePoco.Login);
-           // ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name", applicantProfilePoco.Country);
+
+            ViewBag.Login = new SelectList(db.SecurityLogin, "Id", "EmailAddress", applicantProfilePoco.Login);
+            ViewBag.Country = new SelectList(db.SystemCountryCode, "Code", "Name", applicantProfilePoco.Country);
             return View(applicantProfilePoco);
         }
 
@@ -133,10 +136,10 @@ namespace CareerCloud.MVC.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            //if (disposing)
-            //{
-            //    db.Dispose();
-            //}
+            if (disposing)
+            {
+                db.Dispose();
+            }
             base.Dispose(disposing);
         }
     }

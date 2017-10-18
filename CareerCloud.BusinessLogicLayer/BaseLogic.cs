@@ -31,6 +31,13 @@ namespace CareerCloud.BusinessLogicLayer
             return _repository.GetAll().ToList();
         }
 
+        public virtual List<TPoco> GetList(Func<TPoco, bool> where, params System.Linq.Expressions.Expression<Func<TPoco, object>>[] navigationProperties)
+        {
+            return _repository.GetList(where, navigationProperties).ToList();
+        }
+       
+
+        
         public virtual void Add(TPoco[] pocos)
         {
             foreach (TPoco poco in pocos)
