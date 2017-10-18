@@ -29,9 +29,9 @@
         <th>
             @Html.DisplayNameFor(model => model.PostalCode)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TimeStamp)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -55,9 +55,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.PostalCode)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.TimeStamp)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
