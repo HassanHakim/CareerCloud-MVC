@@ -15,8 +15,8 @@ namespace CareerCloud.MVC.Controllers
     public class CompanyProfileController : Controller
     {
         private CareerCloudContext db = new CareerCloudContext();
-        
-        var _logic = new CompanyProfileLogic(new EFGenericRepository<CompanyProfilePoco>(false));
+
+        CompanyProfileLogic _logic = new CompanyProfileLogic(new EFGenericRepository<CompanyProfilePoco>(false));
 
         // GET: CompanyProfile
         public ActionResult Index()
@@ -117,7 +117,7 @@ namespace CareerCloud.MVC.Controllers
         public ActionResult DeleteConfirmed(Guid id)
         {
             CompanyProfilePoco companyProfilePoco = db.CompanyProfile.Find(id);
-            _logic.Delete( companyProfilePoco );
+            _logic.Delete(new CompanyProfilePoco[] { companyProfilePoco });
             //db.CompanyProfile.Remove(companyProfilePoco);
             //db.SaveChanges();
             return RedirectToAction("Index");
