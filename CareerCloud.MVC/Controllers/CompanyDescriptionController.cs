@@ -16,9 +16,15 @@ namespace CareerCloud.MVC.Controllers
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: CompanyDescription
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var companyDescription = db.CompanyDescription.Include(c => c.CompanyProfile).Include(c => c.SystemLanguageCode);
+        //    return View(companyDescription.ToList());
+        //}
+
+        public ActionResult Index(Guid companyId)
         {
-            var companyDescription = db.CompanyDescription.Include(c => c.CompanyProfile).Include(c => c.SystemLanguageCode);
+            var companyDescription = db.CompanyDescription.Where(cd=>cd.Company==companyId).Include(c => c.CompanyProfile).Include(c => c.SystemLanguageCode);
             return View(companyDescription.ToList());
         }
 

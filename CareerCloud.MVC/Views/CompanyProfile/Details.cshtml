@@ -61,9 +61,9 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Description", "Index", "CompanyDescription") |
-    @Html.ActionLink("Locations", "Index", "CompanyLocation")    |
-    @Html.ActionLink("Jobs", "Index", "CompanyJob") 
+    @Html.ActionLink("Description", "Index", "CompanyDescription", new { companyId = Model.Id }, null) |
+    @Html.ActionLink("Locations", "Index", "CompanyLocation", new { companyId = Model.Id }, null)   |
+    @Html.ActionLink("Jobs", "Index", "CompanyJob", new { companyId = Model.Id }, null)
 
 </p>
 <p>
