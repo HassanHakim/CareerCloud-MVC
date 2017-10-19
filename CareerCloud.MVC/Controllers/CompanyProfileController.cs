@@ -16,7 +16,7 @@ namespace CareerCloud.MVC.Controllers
     {
         private CareerCloudContext db = new CareerCloudContext();
         
-       // var _logic = new CompanyProfileLogic(new EFGenericRepository<CompanyProfilePoco>(false));
+        var _logic = new CompanyProfileLogic(new EFGenericRepository<CompanyProfilePoco>(false));
 
         // GET: CompanyProfile
         public ActionResult Index()
@@ -55,8 +55,9 @@ namespace CareerCloud.MVC.Controllers
             if (ModelState.IsValid)
             {
                 companyProfilePoco.Id = Guid.NewGuid();
-                db.CompanyProfile.Add(companyProfilePoco);
-                db.SaveChanges();
+                _logic.Add(new CompanyProfilePoco[] { companyProfilePoco });
+                //db.CompanyProfile.Add(companyProfilePoco);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -87,8 +88,9 @@ namespace CareerCloud.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(companyProfilePoco).State = EntityState.Modified;
-                db.SaveChanges();
+                _logic.Update(new CompanyProfilePoco[] { companyProfilePoco });
+                //db.Entry(companyProfilePoco).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(companyProfilePoco);
@@ -115,8 +117,9 @@ namespace CareerCloud.MVC.Controllers
         public ActionResult DeleteConfirmed(Guid id)
         {
             CompanyProfilePoco companyProfilePoco = db.CompanyProfile.Find(id);
-            db.CompanyProfile.Remove(companyProfilePoco);
-            db.SaveChanges();
+            _logic.Delete( companyProfilePoco );
+            //db.CompanyProfile.Remove(companyProfilePoco);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 
