@@ -29,6 +29,7 @@ namespace CareerCloud.MVC.Controllers
             return View(companyJob.ToList());
         }
 
+
         // GET: CompanyJob/Details/5
         public ActionResult Details(Guid? id)
         {
