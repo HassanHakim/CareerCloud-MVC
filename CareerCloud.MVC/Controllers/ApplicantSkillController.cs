@@ -22,6 +22,13 @@ namespace CareerCloud.MVC.Controllers
             return View(applicantSkill.ToList());
         }
 
+        [Route("ApplicantSkill/Index/applicantId")]
+        public ActionResult Index(Guid applicantId)
+        {
+            var applicantSkill = db.ApplicantSkill.Where(e => e.Applicant == applicantId).Include(a => a.ApplicantProfile);
+            return View(applicantSkill.ToList());
+        }
+
         // GET: ApplicantSkill/Details/5
         public ActionResult Details(Guid? id)
         {

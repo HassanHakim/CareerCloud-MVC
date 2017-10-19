@@ -94,11 +94,11 @@
 </div>
 <p>
    
-    @Html.ActionLink("Resume", "Index", "ApplicantResume") |
-    @Html.ActionLink("Education", "Index", "ApplicantEducation") |
-    @Html.ActionLink("Skills", "Index", "ApplicantSkill") |
-    @Html.ActionLink("Work History", "Index", "ApplicantWorkHistory") |
-    @Html.ActionLink("Job Applications", "Index", "ApplicantJobApplication") 
+    @Html.ActionLink("Resume", "Index", "ApplicantResume", new { ApplicantId = Model.Id }, null) | 
+    @Html.ActionLink("Education", "Index", "ApplicantEducation", new { ApplicantId = Model.Id }, null) | 
+    @Html.ActionLink("Skills", "Index", "ApplicantSkill", new { ApplicantId = Model.Id }, null) | 
+    @Html.ActionLink("Work History", "Index", "ApplicantWorkHistory", new { ApplicantId = Model.Id }, null) | 
+    @Html.ActionLink("Job Applications", "Index", "ApplicantJobApplication", new { ApplicantId = Model.Id }, null) 
 
 </p>
 <p>
