@@ -16,9 +16,9 @@ namespace CareerCloud.MVC.Controllers
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: CompanyJobEducation
-        public ActionResult Index()
+        public ActionResult Index(Guid jobId)
         {
-            var companyJobEducation = db.CompanyJobEducation.Include(c => c.CompanyJob);
+            var companyJobEducation = db.CompanyJobEducation.Where(je=>je.Job==jobId).Include(c => c.CompanyJob);
             return View(companyJobEducation.ToList());
         }
 
