@@ -22,7 +22,7 @@ namespace CareerCloud.MVC.Controllers
             return View(companyJob.ToList());
         }
 
-        [Route("CompanyJobController/Index/companyId")]        
+        [Route("CompanyJob/Index/companyId")]        
         public ActionResult Index(Guid companyId)
         {
             var companyJob = db.CompanyJob.Where(cj=>cj.Company==companyId).Include(c => c.CompanyProfile);
