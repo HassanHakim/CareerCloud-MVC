@@ -32,13 +32,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: CompanyLocation/Details/5
-        public ActionResult Details(Guid? id)
+        public ActionResult Details(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CompanyLocationPoco companyLocationPoco = db.CompanyLocation.Find(id);
+            CompanyLocationPoco companyLocationPoco = _logic.Get(id);  // db.CompanyLocation.Find(id);
             if (companyLocationPoco == null)
             {
                 return HttpNotFound();
@@ -63,8 +63,9 @@ namespace CareerCloud.MVC.Controllers
             if (ModelState.IsValid)
             {
                 companyLocationPoco.Id = Guid.NewGuid();
-                db.CompanyLocation.Add(companyLocationPoco);
-                db.SaveChanges();
+                //db.CompanyLocation.Add(companyLocationPoco);
+                //db.SaveChanges();
+                _logic.Add(new CompanyLocationPoco[] { companyLocationPoco });
                 return RedirectToAction("Index");
             }
 
@@ -73,13 +74,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: CompanyLocation/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CompanyLocationPoco companyLocationPoco = db.CompanyLocation.Find(id);
+            CompanyLocationPoco companyLocationPoco = _logic.Get(id);  // db.CompanyLocation.Find(id);
             if (companyLocationPoco == null)
             {
                 return HttpNotFound();
@@ -97,8 +98,9 @@ namespace CareerCloud.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(companyLocationPoco).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(companyLocationPoco).State = EntityState.Modified;
+                //db.SaveChanges();
+                _logic.Update(new CompanyLocationPoco[] { companyLocationPoco });
                 return RedirectToAction("Index");
             }
             ViewBag.Company = new SelectList(db.CompanyProfile, "Id", "CompanyWebsite", companyLocationPoco.Company);
@@ -106,13 +108,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: CompanyLocation/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CompanyLocationPoco companyLocationPoco = db.CompanyLocation.Find(id);
+            CompanyLocationPoco companyLocationPoco = _logic.Get(id);  // db.CompanyLocation.Find(id);
             if (companyLocationPoco == null)
             {
                 return HttpNotFound();
@@ -125,9 +127,10 @@ namespace CareerCloud.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            CompanyLocationPoco companyLocationPoco = db.CompanyLocation.Find(id);
-            db.CompanyLocation.Remove(companyLocationPoco);
-            db.SaveChanges();
+            CompanyLocationPoco companyLocationPoco = _logic.Get(id);  // db.CompanyLocation.Find(id);
+            //db.CompanyLocation.Remove(companyLocationPoco);
+            //db.SaveChanges();
+            _logic.Delete(new CompanyLocationPoco[] { companyLocationPoco });
             return RedirectToAction("Index");
         }
 

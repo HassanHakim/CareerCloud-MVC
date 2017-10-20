@@ -31,13 +31,13 @@ namespace CareerCloud.MVC.Controllers
             return View(applicantWorkHistory.ToList());
         }
         // GET: ApplicantWorkHistory/Details/5
-        public ActionResult Details(Guid? id)
+        public ActionResult Details(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantWorkHistoryPoco applicantWorkHistoryPoco = db.ApplicantWorkHistory.Find(id);
+            ApplicantWorkHistoryPoco applicantWorkHistoryPoco = _logic.Get(id); //db.ApplicantWorkHistory.Find(id);
             if (applicantWorkHistoryPoco == null)
             {
                 return HttpNotFound();
@@ -63,8 +63,9 @@ namespace CareerCloud.MVC.Controllers
             if (ModelState.IsValid)
             {
                 applicantWorkHistoryPoco.Id = Guid.NewGuid();
-                db.ApplicantWorkHistory.Add(applicantWorkHistoryPoco);
-                db.SaveChanges();
+                //db.ApplicantWorkHistory.Add(applicantWorkHistoryPoco);
+                //db.SaveChanges();
+                _logic.Add(new ApplicantWorkHistoryPoco[]{ applicantWorkHistoryPoco});
                 return RedirectToAction("Index");
             }
 
@@ -74,13 +75,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: ApplicantWorkHistory/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantWorkHistoryPoco applicantWorkHistoryPoco = db.ApplicantWorkHistory.Find(id);
+            ApplicantWorkHistoryPoco applicantWorkHistoryPoco = _logic.Get(id); // db.ApplicantWorkHistory.Find(id);
             if (applicantWorkHistoryPoco == null)
             {
                 return HttpNotFound();
@@ -99,8 +100,9 @@ namespace CareerCloud.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(applicantWorkHistoryPoco).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(applicantWorkHistoryPoco).State = EntityState.Modified;
+                //db.SaveChanges();
+                _logic.Update(new ApplicantWorkHistoryPoco[] { applicantWorkHistoryPoco });
                 return RedirectToAction("Index");
             }
             ViewBag.Applicant = new SelectList(db.ApplicantProfile, "Id", "Country", applicantWorkHistoryPoco.Applicant);
@@ -109,13 +111,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: ApplicantWorkHistory/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantWorkHistoryPoco applicantWorkHistoryPoco = db.ApplicantWorkHistory.Find(id);
+            ApplicantWorkHistoryPoco applicantWorkHistoryPoco = _logic.Get(id); //db.ApplicantWorkHistory.Find(id);
             if (applicantWorkHistoryPoco == null)
             {
                 return HttpNotFound();
@@ -128,9 +130,10 @@ namespace CareerCloud.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            ApplicantWorkHistoryPoco applicantWorkHistoryPoco = db.ApplicantWorkHistory.Find(id);
-            db.ApplicantWorkHistory.Remove(applicantWorkHistoryPoco);
-            db.SaveChanges();
+            ApplicantWorkHistoryPoco applicantWorkHistoryPoco = _logic.Get(id);// db.ApplicantWorkHistory.Find(id);
+            //db.ApplicantWorkHistory.Remove(applicantWorkHistoryPoco);
+            //db.SaveChanges();
+            _logic.Delete(new ApplicantWorkHistoryPoco[] { applicantWorkHistoryPoco });
             return RedirectToAction("Index");
         }
 

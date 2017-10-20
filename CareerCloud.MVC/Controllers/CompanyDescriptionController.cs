@@ -32,13 +32,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: CompanyDescription/Details/5
-        public ActionResult Details(Guid? id)
+        public ActionResult Details(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CompanyDescriptionPoco companyDescriptionPoco = db.CompanyDescription.Find(id);
+            CompanyDescriptionPoco companyDescriptionPoco = _logic.Get(id); // db.CompanyDescription.Find(id);
             if (companyDescriptionPoco == null)
             {
                 return HttpNotFound();
@@ -64,8 +64,9 @@ namespace CareerCloud.MVC.Controllers
             if (ModelState.IsValid)
             {
                 companyDescriptionPoco.Id = Guid.NewGuid();
-                db.CompanyDescription.Add(companyDescriptionPoco);
-                db.SaveChanges();
+                //db.CompanyDescription.Add(companyDescriptionPoco);
+                //db.SaveChanges();
+                _logic.Add(new CompanyDescriptionPoco[] { companyDescriptionPoco });
                 return RedirectToAction("Index");
             }
 
@@ -75,13 +76,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: CompanyDescription/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CompanyDescriptionPoco companyDescriptionPoco = db.CompanyDescription.Find(id);
+            CompanyDescriptionPoco companyDescriptionPoco = _logic.Get(id);  // db.CompanyDescription.Find(id);
             if (companyDescriptionPoco == null)
             {
                 return HttpNotFound();
@@ -100,8 +101,9 @@ namespace CareerCloud.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(companyDescriptionPoco).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(companyDescriptionPoco).State = EntityState.Modified;
+                //db.SaveChanges();
+                _logic.Update(new CompanyDescriptionPoco[] { companyDescriptionPoco });
                 return RedirectToAction("Index");
             }
             ViewBag.Company = new SelectList(db.CompanyProfile, "Id", "CompanyWebsite", companyDescriptionPoco.Company);
@@ -110,13 +112,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: CompanyDescription/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CompanyDescriptionPoco companyDescriptionPoco = db.CompanyDescription.Find(id);
+            CompanyDescriptionPoco companyDescriptionPoco = _logic.Get(id);  // db.CompanyDescription.Find(id);
             if (companyDescriptionPoco == null)
             {
                 return HttpNotFound();
@@ -129,9 +131,10 @@ namespace CareerCloud.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            CompanyDescriptionPoco companyDescriptionPoco = db.CompanyDescription.Find(id);
-            db.CompanyDescription.Remove(companyDescriptionPoco);
-            db.SaveChanges();
+            CompanyDescriptionPoco companyDescriptionPoco = _logic.Get(id);  // db.CompanyDescription.Find(id);
+            //db.CompanyDescription.Remove(companyDescriptionPoco);
+            //db.SaveChanges();
+            _logic.Delete(new CompanyDescriptionPoco[] { companyDescriptionPoco });
             return RedirectToAction("Index");
         }
 

@@ -32,13 +32,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: ApplicantSkill/Details/5
-        public ActionResult Details(Guid? id)
+        public ActionResult Details(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantSkillPoco applicantSkillPoco = db.ApplicantSkill.Find(id);
+            ApplicantSkillPoco applicantSkillPoco = _logic.Get(id); // db.ApplicantSkill.Find(id);
             if (applicantSkillPoco == null)
             {
                 return HttpNotFound();
@@ -63,8 +63,9 @@ namespace CareerCloud.MVC.Controllers
             if (ModelState.IsValid)
             {
                 applicantSkillPoco.Id = Guid.NewGuid();
-                db.ApplicantSkill.Add(applicantSkillPoco);
-                db.SaveChanges();
+                //db.ApplicantSkill.Add(applicantSkillPoco);
+                //db.SaveChanges();
+                _logic.Add(new ApplicantSkillPoco[] { applicantSkillPoco });
                 return RedirectToAction("Index");
             }
 
@@ -73,13 +74,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: ApplicantSkill/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantSkillPoco applicantSkillPoco = db.ApplicantSkill.Find(id);
+            ApplicantSkillPoco applicantSkillPoco = _logic.Get(id); //db.ApplicantSkill.Find(id);
             if (applicantSkillPoco == null)
             {
                 return HttpNotFound();
@@ -97,8 +98,9 @@ namespace CareerCloud.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(applicantSkillPoco).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(applicantSkillPoco).State = EntityState.Modified;
+                //db.SaveChanges();
+                _logic.Update(new ApplicantSkillPoco[] { applicantSkillPoco });
                 return RedirectToAction("Index");
             }
             ViewBag.Applicant = new SelectList(db.ApplicantProfile, "Id", "Country", applicantSkillPoco.Applicant);
@@ -106,13 +108,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: ApplicantSkill/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantSkillPoco applicantSkillPoco = db.ApplicantSkill.Find(id);
+            ApplicantSkillPoco applicantSkillPoco = _logic.Get(id); // db.ApplicantSkill.Find(id);
             if (applicantSkillPoco == null)
             {
                 return HttpNotFound();
@@ -125,9 +127,10 @@ namespace CareerCloud.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            ApplicantSkillPoco applicantSkillPoco = db.ApplicantSkill.Find(id);
-            db.ApplicantSkill.Remove(applicantSkillPoco);
-            db.SaveChanges();
+            ApplicantSkillPoco applicantSkillPoco = _logic.Get(id); //db.ApplicantSkill.Find(id);
+            //db.ApplicantSkill.Remove(applicantSkillPoco);
+            //db.SaveChanges();
+            _logic.Delete(new ApplicantSkillPoco[] { applicantSkillPoco });
             return RedirectToAction("Index");
         }
 

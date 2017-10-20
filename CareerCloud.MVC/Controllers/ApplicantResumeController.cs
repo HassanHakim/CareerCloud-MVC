@@ -33,13 +33,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: ApplicantResume/Details/5
-        public ActionResult Details(Guid? id)
+        public ActionResult Details(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantResumePoco applicantResumePoco = db.ApplicantResume.Find(id);
+            ApplicantResumePoco applicantResumePoco = _logic.Get(id); //db.ApplicantResume.Find(id);
             if (applicantResumePoco == null)
             {
                 return HttpNotFound();
@@ -64,8 +64,9 @@ namespace CareerCloud.MVC.Controllers
             if (ModelState.IsValid)
             {
                 applicantResumePoco.Id = Guid.NewGuid();
-                db.ApplicantResume.Add(applicantResumePoco);
-                db.SaveChanges();
+                //db.ApplicantResume.Add(applicantResumePoco);
+                //db.SaveChanges();
+                _logic.Add(new ApplicantResumePoco[]{ applicantResumePoco});
                 return RedirectToAction("Index");
             }
 
@@ -74,13 +75,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: ApplicantResume/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantResumePoco applicantResumePoco = db.ApplicantResume.Find(id);
+            ApplicantResumePoco applicantResumePoco = _logic.Get(id); // db.ApplicantResume.Find(id);
             if (applicantResumePoco == null)
             {
                 return HttpNotFound();
@@ -98,8 +99,9 @@ namespace CareerCloud.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(applicantResumePoco).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(applicantResumePoco).State = EntityState.Modified;
+                //db.SaveChanges();
+                _logic.Update(new ApplicantResumePoco[] { applicantResumePoco });
                 return RedirectToAction("Index");
             }
             ViewBag.Applicant = new SelectList(db.ApplicantProfile, "Id", "Country", applicantResumePoco.Applicant);
@@ -107,13 +109,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: ApplicantResume/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantResumePoco applicantResumePoco = db.ApplicantResume.Find(id);
+            ApplicantResumePoco applicantResumePoco = _logic.Get(id); // db.ApplicantResume.Find(id);
             if (applicantResumePoco == null)
             {
                 return HttpNotFound();
@@ -126,9 +128,10 @@ namespace CareerCloud.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            ApplicantResumePoco applicantResumePoco = db.ApplicantResume.Find(id);
-            db.ApplicantResume.Remove(applicantResumePoco);
-            db.SaveChanges();
+            ApplicantResumePoco applicantResumePoco = _logic.Get(id); // db.ApplicantResume.Find(id);
+            //db.ApplicantResume.Remove(applicantResumePoco);
+            //db.SaveChanges();
+            _logic.Delete(new ApplicantResumePoco[] { applicantResumePoco });
             return RedirectToAction("Index");
         }
 

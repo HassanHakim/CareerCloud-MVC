@@ -25,13 +25,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: CompanyProfile/Details/5
-        public ActionResult Details(Guid? id)
+        public ActionResult Details(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CompanyProfilePoco companyProfilePoco = db.CompanyProfile.Find(id);
+            CompanyProfilePoco companyProfilePoco = _logic.Get(id); // db.CompanyProfile.Find(id);
             if (companyProfilePoco == null)
             {
                 return HttpNotFound();
@@ -65,13 +65,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: CompanyProfile/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CompanyProfilePoco companyProfilePoco = db.CompanyProfile.Find(id);
+            CompanyProfilePoco companyProfilePoco = _logic.Get(id); // db.CompanyProfile.Find(id);
             if (companyProfilePoco == null)
             {
                 return HttpNotFound();
@@ -97,13 +97,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: CompanyProfile/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CompanyProfilePoco companyProfilePoco = db.CompanyProfile.Find(id);
+            CompanyProfilePoco companyProfilePoco = _logic.Get(id);  // db.CompanyProfile.Find(id);
             if (companyProfilePoco == null)
             {
                 return HttpNotFound();
@@ -116,7 +116,7 @@ namespace CareerCloud.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            CompanyProfilePoco companyProfilePoco = db.CompanyProfile.Find(id);
+            CompanyProfilePoco companyProfilePoco = _logic.Get(id);  // db.CompanyProfile.Find(id);
             _logic.Delete(new CompanyProfilePoco[] { companyProfilePoco });
             //db.CompanyProfile.Remove(companyProfilePoco);
             //db.SaveChanges();
