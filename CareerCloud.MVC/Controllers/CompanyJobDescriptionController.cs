@@ -37,7 +37,7 @@ namespace CareerCloud.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CompanyJobDescriptionPoco companyJobDescriptionPoco = _logic.Get(id);  // db.CompanyJobDescription.Find(id);
+            CompanyJobDescriptionPoco companyJobDescriptionPoco =  db.CompanyJobDescription.Find(id); // _logic.Get(id);  
             if (companyJobDescriptionPoco == null)
             {
                 return HttpNotFound();

@@ -38,7 +38,7 @@ namespace CareerCloud.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantJobApplicationPoco applicantJobApplicationPoco = _logic.Get(id); // db.ApplicantJobApplication.Find(id);
+            ApplicantJobApplicationPoco applicantJobApplicationPoco = db.ApplicantJobApplication.Find(id); // _logic.Get(id); 
             if (applicantJobApplicationPoco == null)
             {
                 return HttpNotFound();
