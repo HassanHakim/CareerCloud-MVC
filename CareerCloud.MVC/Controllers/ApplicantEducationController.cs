@@ -8,11 +8,14 @@ using System.Web;
 using System.Web.Mvc;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using CareerCloud.BusinessLogicLayer;
 
 namespace CareerCloud.MVC.Controllers
 {
     public class ApplicantEducationController : Controller
     {
+
+        ApplicantEducationLogic _logic = new ApplicantEducationLogic(new EFGenericRepository<ApplicantEducationPoco>(false));
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: ApplicantEducation
@@ -30,13 +33,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: ApplicantEducation/Details/5
-        public ActionResult Details(Guid? id)
+        public ActionResult Details(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantEducationPoco applicantEducationPoco = db.ApplicantEducation.Find(id);
+            ApplicantEducationPoco applicantEducationPoco = _logic.Get(id); // db.ApplicantEducation.Find(id);
             if (applicantEducationPoco == null)
             {
                 return HttpNotFound();
@@ -61,8 +64,9 @@ namespace CareerCloud.MVC.Controllers
             if (ModelState.IsValid)
             {
                 applicantEducationPoco.Id = Guid.NewGuid();
-                db.ApplicantEducation.Add(applicantEducationPoco);
-                db.SaveChanges();
+                //db.ApplicantEducation.Add(applicantEducationPoco);
+                //db.SaveChanges();
+                _logic.Add(new ApplicantEducationPoco[] { applicantEducationPoco });
                 return RedirectToAction("Index");
             }
 
@@ -71,13 +75,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: ApplicantEducation/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantEducationPoco applicantEducationPoco = db.ApplicantEducation.Find(id);
+            ApplicantEducationPoco applicantEducationPoco = _logic.Get(id); // db.ApplicantEducation.Find(id);
             if (applicantEducationPoco == null)
             {
                 return HttpNotFound();
@@ -95,8 +99,9 @@ namespace CareerCloud.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(applicantEducationPoco).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(applicantEducationPoco).State = EntityState.Modified;
+                //db.SaveChanges();
+                _logic.Update(new ApplicantEducationPoco[] { applicantEducationPoco });
                 return RedirectToAction("Index");
             }
             ViewBag.Applicant = new SelectList(db.ApplicantProfile, "Id", "Country", applicantEducationPoco.Applicant);
@@ -104,13 +109,13 @@ namespace CareerCloud.MVC.Controllers
         }
 
         // GET: ApplicantEducation/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult Delete(Guid id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantEducationPoco applicantEducationPoco = db.ApplicantEducation.Find(id);
+            ApplicantEducationPoco applicantEducationPoco = _logic.Get(id); // db.ApplicantEducation.Find(id);
             if (applicantEducationPoco == null)
             {
                 return HttpNotFound();
@@ -123,9 +128,10 @@ namespace CareerCloud.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            ApplicantEducationPoco applicantEducationPoco = db.ApplicantEducation.Find(id);
-            db.ApplicantEducation.Remove(applicantEducationPoco);
-            db.SaveChanges();
+            ApplicantEducationPoco applicantEducationPoco = _logic.Get(id); // db.ApplicantEducation.Find(id);
+            //db.ApplicantEducation.Remove(applicantEducationPoco);
+            //db.SaveChanges();
+            _logic.Delete(new ApplicantEducationPoco[] { applicantEducationPoco });
             return RedirectToAction("Index");
         }
 

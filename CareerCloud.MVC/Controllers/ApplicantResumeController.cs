@@ -8,11 +8,14 @@ using System.Web;
 using System.Web.Mvc;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using CareerCloud.BusinessLogicLayer;
 
 namespace CareerCloud.MVC.Controllers
 {
     public class ApplicantResumeController : Controller
     {
+        ApplicantResumeLogic _logic = new ApplicantResumeLogic(new EFGenericRepository<ApplicantResumePoco>(false));
+
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: ApplicantResume

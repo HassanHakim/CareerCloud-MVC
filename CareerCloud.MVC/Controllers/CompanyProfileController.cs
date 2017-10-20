@@ -13,10 +13,10 @@ using CareerCloud.BusinessLogicLayer;
 namespace CareerCloud.MVC.Controllers
 {
     public class CompanyProfileController : Controller
-    {
-        private CareerCloudContext db = new CareerCloudContext();
+    {       
 
         CompanyProfileLogic _logic = new CompanyProfileLogic(new EFGenericRepository<CompanyProfilePoco>(false));
+        private CareerCloudContext db = new CareerCloudContext();
 
         // GET: CompanyProfile
         public ActionResult Index()

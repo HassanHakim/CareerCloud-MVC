@@ -14,8 +14,9 @@ namespace CareerCloud.MVC.Controllers
 {
     public class ApplicantProfileController : Controller
     {
-        private CareerCloudContext db = new CareerCloudContext();       
         ApplicantProfileLogic _logic = new ApplicantProfileLogic(new EFGenericRepository<ApplicantProfilePoco>(false));
+        private CareerCloudContext db = new CareerCloudContext();      
+        
 
         // GET: ApplicantProfile
         

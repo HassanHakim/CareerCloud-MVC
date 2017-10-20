@@ -8,11 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using CareerCloud.BusinessLogicLayer;
 
 namespace CareerCloud.MVC.Controllers
 {
     public class CompanyJobController : Controller
     {
+        CompanyJobLogic _logic = new CompanyJobLogic(new EFGenericRepository<CompanyJobPoco>(false));
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: CompanyJob

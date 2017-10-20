@@ -8,11 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
+using CareerCloud.BusinessLogicLayer;
 
 namespace CareerCloud.MVC.Controllers
 {
     public class ApplicantSkillController : Controller
     {
+        ApplicantSkillLogic _logic = new ApplicantSkillLogic(new EFGenericRepository<ApplicantSkillPoco>(false));
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: ApplicantSkill
