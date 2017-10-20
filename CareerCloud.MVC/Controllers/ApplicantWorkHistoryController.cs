@@ -18,6 +18,7 @@ namespace CareerCloud.MVC.Controllers
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: ApplicantWorkHistory
+        [Route("ApplicantWorkHistory/Index")]
         public ActionResult Index()
         {
             var applicantWorkHistory = db.ApplicantWorkHistory.Include(a => a.ApplicantProfile).Include(a => a.SystemCountryCode);

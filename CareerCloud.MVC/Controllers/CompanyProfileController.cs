@@ -19,6 +19,7 @@ namespace CareerCloud.MVC.Controllers
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: CompanyProfile
+        [Route("CompanyProfile/Index")]
         public ActionResult Index()
         {
             return View(db.CompanyProfile.ToList());

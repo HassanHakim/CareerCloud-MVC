@@ -18,6 +18,7 @@ namespace CareerCloud.MVC.Controllers
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: CompanyDescription
+        [Route("CompanyDescription/Index")]
         public ActionResult Index()
         {
             var companyDescription = db.CompanyDescription.Include(c => c.CompanyProfile).Include(c => c.SystemLanguageCode);

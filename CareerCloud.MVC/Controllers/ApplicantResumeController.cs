@@ -19,6 +19,7 @@ namespace CareerCloud.MVC.Controllers
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: ApplicantResume
+        [Route("ApplicantResume/Index")]
         public ActionResult Index()
         {
             var applicantResume = db.ApplicantResume.Include(a => a.ApplicantProfile);

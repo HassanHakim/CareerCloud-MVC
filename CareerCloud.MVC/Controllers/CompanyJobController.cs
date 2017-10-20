@@ -18,6 +18,7 @@ namespace CareerCloud.MVC.Controllers
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: CompanyJob
+        [Route("CompanyJob/Index")]
         public ActionResult Index()
         {
             var companyJob = db.CompanyJob.Include(c => c.CompanyProfile);

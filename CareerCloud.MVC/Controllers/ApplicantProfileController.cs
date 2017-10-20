@@ -15,11 +15,11 @@ namespace CareerCloud.MVC.Controllers
     public class ApplicantProfileController : Controller
     {
         ApplicantProfileLogic _logic = new ApplicantProfileLogic(new EFGenericRepository<ApplicantProfilePoco>(false));
-        private CareerCloudContext db = new CareerCloudContext();      
-        
+        private CareerCloudContext db = new CareerCloudContext();
+
 
         // GET: ApplicantProfile
-        
+        [Route("ApplicantProfile/Index")]
         public ActionResult Index()
         {
             var applicantProfile = db.ApplicantProfile.Include(a => a.SecurityLogin).Include(a => a.SystemCountryCode);
