@@ -18,19 +18,28 @@ namespace CareerCloud.MVC.Controllers
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: ApplicantJobApplication
-        [Route("ApplicantJobApplication/Index")]
-        public ActionResult Index()
+        //[Route("ApplicantJobApplication/Index")]
+        //public ActionResult Index()
+        //{
+        //    var applicantJobApplication = db.ApplicantJobApplication.Include(a => a.ApplicantProfile).Include(a => a.CompanyJob);
+        //    return View(applicantJobApplication.ToList());
+        //}
+
+        [Route("ApplicantJobApplication/Index/applicantId")]
+        public ActionResult Index(Guid? applicantId)
         {
+
             var applicantJobApplication = db.ApplicantJobApplication.Include(a => a.ApplicantProfile).Include(a => a.CompanyJob);
+
+            if (applicantId != null)
+            {
+                applicantJobApplication = applicantJobApplication.Where(e => e.Applicant == applicantId);
+            }
+
             return View(applicantJobApplication.ToList());
         }
 
-        [Route("ApplicantJobApplication/Index/applicantId")]
-        public ActionResult Index(Guid applicantId)
-        {
-            var applicantJobApplication = db.ApplicantJobApplication.Where(e => e.Applicant == applicantId).Include(a => a.ApplicantProfile).Include(a => a.CompanyJob);
-            return View(applicantJobApplication.ToList());
-        }
+
 
         // GET: ApplicantJobApplication/Details/5
         public ActionResult Details(Guid id)

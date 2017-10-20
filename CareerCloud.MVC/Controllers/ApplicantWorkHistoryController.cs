@@ -18,17 +18,21 @@ namespace CareerCloud.MVC.Controllers
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: ApplicantWorkHistory
-        [Route("ApplicantWorkHistory/Index")]
-        public ActionResult Index()
-        {
-            var applicantWorkHistory = db.ApplicantWorkHistory.Include(a => a.ApplicantProfile).Include(a => a.SystemCountryCode);
-            return View(applicantWorkHistory.ToList());
-        }
+        //[Route("ApplicantWorkHistory/Index")]
+        //public ActionResult Index()
+        //{
+        //    var applicantWorkHistory = db.ApplicantWorkHistory.Include(a => a.ApplicantProfile).Include(a => a.SystemCountryCode);
+        //    return View(applicantWorkHistory.ToList());
+        //}
 
         [Route("ApplicantWorkHistory/Index/applicantId")]
         public ActionResult Index(Guid applicantId)
         {
-            var applicantWorkHistory = db.ApplicantWorkHistory.Where(e => e.Applicant == applicantId).Include(a => a.ApplicantProfile).Include(a => a.SystemCountryCode);
+            var applicantWorkHistory = db.ApplicantWorkHistory.Include(a => a.ApplicantProfile).Include(a => a.SystemCountryCode);
+
+            if (applicantId != null)
+                 applicantWorkHistory = applicantWorkHistory.Where(e => e.Applicant == applicantId);
+
             return View(applicantWorkHistory.ToList());
         }
         // GET: ApplicantWorkHistory/Details/5

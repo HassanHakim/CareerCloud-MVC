@@ -8,11 +8,13 @@ namespace CareerCloud.MVC.Controllers
 {
     public class HomeController : Controller
     {
+        
         public ActionResult Index()
         {
             return View();
         }
 
+        
         public ActionResult About()
         {
             ViewBag.Message = "Career Cloud";
@@ -20,6 +22,7 @@ namespace CareerCloud.MVC.Controllers
             return View();
         }
 
+       
         public ActionResult Contact()
         {
             ViewBag.Message = "Career Cloud contacts";

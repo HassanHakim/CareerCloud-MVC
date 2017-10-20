@@ -18,17 +18,19 @@ namespace CareerCloud.MVC.Controllers
         private CareerCloudContext db = new CareerCloudContext();
 
         // GET: CompanyLocation
-        [Route("CompanyLocation/Index")]
-        public ActionResult Index()
-        {
-            var companyLocation = db.CompanyLocation.Include(c => c.CompanyProfile);
-            return View(companyLocation.ToList());
-        }
+        //[Route("CompanyLocation/Index")]
+        //public ActionResult Index()
+        //{
+        //    var companyLocation = db.CompanyLocation.Include(c => c.CompanyProfile);
+        //    return View(companyLocation.ToList());
+        //}
 
         [Route("CompanyLocation/Index/companyId")]
-        public ActionResult Index(Guid companyId)
+        public ActionResult Index(Guid? companyId)
         {
-            var companyLocation = db.CompanyLocation.Where(cl=>cl.Company==companyId).Include(c => c.CompanyProfile);
+            var companyLocation = db.CompanyLocation.Include(c => c.CompanyProfile);
+            if (companyId != null)
+                companyLocation = companyLocation.Where(cl=>cl.Company==companyId);
             return View(companyLocation.ToList());
         }
 
