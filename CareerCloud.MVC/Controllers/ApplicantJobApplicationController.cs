@@ -55,7 +55,7 @@ namespace CareerCloud.MVC.Controllers
         // GET: ApplicantJobApplication/Create
         public ActionResult Create()
         {
-            ViewBag.Applicant = new SelectList(db.ApplicantProfile, "Id", "Id");
+            ViewBag.Applicant = new SelectList(db.ApplicantProfile, "Id", "SecurityLogin.EmailAddress");
             ViewBag.Job = new SelectList(db.CompanyJob, "Id", "Id");
             return View();
         }
