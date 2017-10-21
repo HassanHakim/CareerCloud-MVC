@@ -29,13 +29,9 @@ namespace CareerCloud.MVC.Controllers
         public ActionResult Index(Guid? applicantId)
         {
 
-            var applicantJobApplication = db.ApplicantJobApplication.Include(a => a.ApplicantProfile).Include(a => a.CompanyJob);
-
-            if (applicantId != null)
-            {
-                applicantJobApplication = applicantJobApplication.Where(e => e.Applicant == applicantId);
-            }
-
+            var applicantJobApplication = db.ApplicantJobApplication.Where(a => (applicantId == null) ? true : a.Applicant == applicantId)
+                                                            .Include(a => a.ApplicantProfile).Include(a => a.CompanyJob);
+            
             return View(applicantJobApplication.ToList());
         }
 
@@ -59,7 +55,7 @@ namespace CareerCloud.MVC.Controllers
         // GET: ApplicantJobApplication/Create
         public ActionResult Create()
         {
-            ViewBag.Applicant = new SelectList(db.ApplicantProfile, "Id", "Country");
+            ViewBag.Applicant = new SelectList(db.ApplicantProfile, "Id", "Id");
             ViewBag.Job = new SelectList(db.CompanyJob, "Id", "Id");
             return View();
         }
@@ -129,7 +125,7 @@ namespace CareerCloud.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicantJobApplicationPoco applicantJobApplicationPoco = _logic.Get(id);// db.ApplicantJobApplication.Find(id);
+            ApplicantJobApplicationPoco applicantJobApplicationPoco =  db.ApplicantJobApplication.Find(id); // _logic.Get(id);
             if (applicantJobApplicationPoco == null)
             {
                 return HttpNotFound();
@@ -143,10 +139,10 @@ namespace CareerCloud.MVC.Controllers
         public ActionResult DeleteConfirmed(Guid id)
         {
             ApplicantJobApplicationPoco applicantJobApplicationPoco = db.ApplicantJobApplication.Find(id);
-            //db.ApplicantJobApplication.Remove(applicantJobApplicationPoco);
-            //db.SaveChanges();
+            db.ApplicantJobApplication.Remove(applicantJobApplicationPoco);
+            db.SaveChanges();
 
-            _logic.Delete(new ApplicantJobApplicationPoco[] { applicantJobApplicationPoco });
+            //_logic.Delete(new ApplicantJobApplicationPoco[] { applicantJobApplicationPoco });
 
             return RedirectToAction("Index");
         }

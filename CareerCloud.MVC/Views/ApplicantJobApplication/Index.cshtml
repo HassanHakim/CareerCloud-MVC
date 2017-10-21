@@ -47,7 +47,8 @@
             @Html.DisplayFor(modelItem => item.CompanyJob.CompanyProfile.CompanyDescriptions.FirstOrDefault(e => e.LanguageId == "EN").CompanyName)
         </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.ApplicationDate)
+           @* @Html.DisplayFor(modelItem => item.ApplicationDate)*@
+             @item.ApplicationDate.ToString("MM/dd/yyyy")
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.TimeStamp)

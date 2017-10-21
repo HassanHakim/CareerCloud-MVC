@@ -21,9 +21,17 @@ namespace CareerCloud.BusinessLogicLayer
             return;
         }
 
-        public virtual TPoco Get(Guid id)
+        // This method could be removed after adding GetSingle
+        public virtual TPoco Get(Guid? id)
         {
+            if (id == null)
+                return default(TPoco);
             return _repository.GetSingle(c => c.Id == id);
+        }
+
+        public virtual TPoco GetSingle(Func<TPoco, bool> where, params System.Linq.Expressions.Expression<Func<TPoco, object>>[] navigationProperties)
+        {
+            return _repository.GetSingle(where, navigationProperties);
         }
 
         public virtual List<TPoco> GetAll()

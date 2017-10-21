@@ -26,7 +26,7 @@ namespace CareerCloud.MVC.Controllers
         //}
 
         [Route("CompanyDescription/Index/companyId")]
-        public ActionResult Index(Guid companyId)
+        public ActionResult Index(Guid? companyId)
         {
             var companyDescription = db.CompanyDescription.Include(c => c.CompanyProfile).Include(c => c.SystemLanguageCode);
             if(companyId != null)

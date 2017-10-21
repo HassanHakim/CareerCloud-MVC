@@ -55,7 +55,10 @@
 <p>
     @Html.ActionLink("Job Description", "Index", "CompanyJobDescription", new { jobId = Model.Id }, null) |
     @Html.ActionLink("Required Education", "Index", "CompanyJobEducation", new { jobId = Model.Id }, null) |
-    @Html.ActionLink("Required Skills", "Index", "CompanyJobSkill", new { jobId = Model.Id }, null) 
+    @Html.ActionLink("Required Skills", "Index", "CompanyJobSkill", new { jobId = Model.Id }, null) |
+   
+    @Html.ActionLink("Job Applications", "Index", "ApplicantJobApplication", new { jobId = Model.Id }, null)
+    
 </p>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

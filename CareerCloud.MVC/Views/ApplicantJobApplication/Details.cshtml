@@ -11,20 +11,47 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.ApplicantProfile.SecurityLogin.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicantProfile.SecurityLogin.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicantProfile.SecurityLogin.EmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicantProfile.SecurityLogin.EmailAddress)
+        </dd>
+
+        @*<dt>
             @Html.DisplayNameFor(model => model.ApplicantProfile.Country)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ApplicantProfile.Country)
-        </dd>
+        </dd>*@
 
         <dt>
-            @Html.DisplayNameFor(model => model.CompanyJob.Id)
+            @*@Html.DisplayNameFor(model => model.CompanyJob.Id)*@
+            <label>Job Id</label>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.CompanyJob.Id)
         </dd>
+
+
+        <dt>       
+            <label>Company Name</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyJob.CompanyProfile.CompanyDescriptions.FirstOrDefault(a=>a.LanguageId=='EN'))
+        </dd>
+
 
         <dt>
             @Html.DisplayNameFor(model => model.ApplicationDate)
