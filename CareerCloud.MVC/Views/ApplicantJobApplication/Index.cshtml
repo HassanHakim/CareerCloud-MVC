@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<CareerCloud.Pocos.ApplicantJobApplicationPoco>
 
 @{
-    ViewBag.Title = "Job Applications Index";
+    ViewBag.Title = "Job Applications";
 }
 
-<h2>Job Applications Index</h2>
+<h2>Job Applications</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,11 +12,17 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.ApplicantProfile.SecurityLogin.FullName)
+        </th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ApplicantProfile.Country)
-        </th>
+        </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.CompanyJob.Id)
+            @Html.DisplayNameFor(model => model.CompanyJob.CompanyJobDescriptions.FirstOrDefault(e => true).JobName)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CompanyJob.CompanyProfile.CompanyDescriptions.FirstOrDefault(e=>e.LanguageId=="EN").CompanyName)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ApplicationDate)
         </th>
@@ -29,11 +35,17 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.ApplicantProfile.SecurityLogin.FullName)
+        </td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.ApplicantProfile.Country)
-        </td>
+        </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.CompanyJob.Id)
+            @Html.DisplayFor(modelItem => item.CompanyJob.CompanyJobDescriptions.FirstOrDefault(e => true).JobName)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CompanyJob.CompanyProfile.CompanyDescriptions.FirstOrDefault(e => e.LanguageId == "EN").CompanyName)
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.ApplicationDate)
         </td>
